@@ -1,12 +1,41 @@
-sudo apt update
-sudo apt -y install git curl vim snapd
+#!/bin/bash
+# Assuming its a debian based system
+echo "What do you want me to do ? (setup-base; setup-jenkins)"
+read TODO
 
-# Configure terminal from https://github.com/therahulprasad/my-terminal-configuration
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/therahulprasad/my-terminal-configuration/master/init.sh)"
+if [ $TODO == "setup-base" ]; then
+  sudo apt update
+  sudo apt -y install git curl vim snapd
 
-# Configure vim from https://github.com/therahulprasad/my-vim-configulation
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/therahulprasad/my-vim-configulation/master/install.sh)"
+  # Configure terminal from https://github.com/therahulprasad/my-terminal-configuration
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/therahulprasad/my-terminal-configuration/master/init.sh)"
 
-# Install basic applications, IDEs and tools
-sudo snap install sublime-text atom skype firefox android-studio
-sudo snap install docker gitkraken
+  # Configure vim from https://github.com/therahulprasad/my-vim-configulation
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/therahulprasad/my-vim-configulation/master/install.sh)"
+
+  # Install basic applications, IDEs and tools
+  sudo snap install sublime-text atom skype firefox android-studio
+  sudo snap install docker gitkraken
+fi
+
+if [ $TODO == "setup-jenkins" ]; then
+  # Setup Jenkins
+  ls $HOME/jenkins_home || mkdir $HOME/jenkins_home
+  echo "Copy old jenkins home data to $HOME/jenkins_home folder and press any key" && read ANS;
+  
+  # TODO: Fix me (This is a hack to save from permission issues as jenkins users from docker might now be able to access this folder)
+  chmod 777 $HOME/jenkins_home # IF this does not work try sudo chmod -R 777 $HOME/jenkins_home
+  sudo docker run -v $HOME/jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts
+  
+  if which xdg-open > /dev/null
+  then
+    xdg-open "http://localhost:8080/"
+  elif which gnome-open > /dev/null
+  then
+    gnome-open "http://localhost:8080/"
+  fi
+  
+  # If installing from scratch install these plugins as well
+  # Install popular plugins
+  # Install android-emulator
+fi
