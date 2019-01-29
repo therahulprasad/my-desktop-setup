@@ -16,6 +16,16 @@ if [ $TODO == "setup-base" ]; then
   # Install basic applications, IDEs and tools
   sudo snap install sublime-text atom skype firefox android-studio
   sudo snap install docker gitkraken
+  
+  # Install gvm
+  sudo apt install bison
+  bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+  source $HOME/.gvm/scripts/gvm
+  gvm install go1.4 -B # This is needed for building upstream version from source code
+  gvm use go1.4 # Set it as default
+  export GOROOT_BOOTSTRAP=$GOROOT
+  gvm install go1.11.5 # TODO: Install latest version or take it as an argument
+  gvm use go1.11.5 # Use currently installed version of GO
 fi
 
 if [ $TODO == "setup-jenkins" ]; then
