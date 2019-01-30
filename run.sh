@@ -26,6 +26,10 @@ if [ $TODO == "setup-base" ]; then
   export GOROOT_BOOTSTRAP=$GOROOT
   gvm install go1.11.5 # TODO: Install latest version or take it as an argument
   gvm use go1.11.5 # Use currently installed version of GO
+  
+  # AWSCLI
+  pip3 install awscli
+  
 fi
 
 if [ $TODO == "setup-jenkins" ]; then
