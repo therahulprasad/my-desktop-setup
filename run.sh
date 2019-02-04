@@ -4,6 +4,9 @@ echo "What do you want me to do ? (setup-base; setup-jenkins)"
 read TODO
 
 if [ $TODO == "setup-base" ]; then
+  ls $HOME/Development || mkdir $HOME/Development
+  ls $HOME/Development/go || mkdir $HOME/Development/go
+
   sudo apt update
   sudo apt -y install git curl vim snapd python3-pip   
 
@@ -20,16 +23,17 @@ if [ $TODO == "setup-base" ]; then
   # Install gvm
   sudo apt install bison
   bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
-  source $HOME/.gvm/scripts/gvm
+  [[ -s "\$HOME/.gvm/scripts/gvm" ]] && source "\$HOME/.gvm/scripts/gvm"
   gvm install go1.4 -B # This is needed for building upstream version from source code
   gvm use go1.4 # Set it as default
   export GOROOT_BOOTSTRAP=$GOROOT
   gvm install go1.11.5 # TODO: Install latest version or take it as an argument
   gvm use go1.11.5 # Use currently installed version of GO
+  echo "export GOPATH=\$HOME/Development/go" >> $HOME/.zshrc
+  echo "export PATH=\$PATH:$GOROOT/bin:\$GOPATH/bin" >> $HOME/.zshrc
   
   # AWSCLI
   pip3 install awscli
-  
 fi
 
 if [ $TODO == "setup-jenkins" ]; then
