@@ -8,7 +8,7 @@ if [ $TODO == "setup-base" ]; then
   ls $HOME/Development/go || mkdir $HOME/Development/go
 
   sudo apt update
-  sudo apt -y install git curl vim snapd python3-pip   
+  sudo apt -y install git curl vim snapd python3-pip adb  
 
   # Configure terminal from https://github.com/therahulprasad/my-terminal-configuration
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/therahulprasad/my-terminal-configuration/master/init.sh)"
