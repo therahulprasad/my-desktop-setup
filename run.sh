@@ -9,7 +9,7 @@ if [ $TODO == "setup-base" ]; then
 
   sudo apt update
   sudo apt -y install git curl vim snapd python3-pip adb 
-  sudo apt -y install ncdu ecryptfs-utils 
+  sudo apt -y install ncdu ecryptfs-utils openssh-server 
 
   # Configure terminal from https://github.com/therahulprasad/my-terminal-configuration
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/therahulprasad/my-terminal-configuration/master/init.sh)"
