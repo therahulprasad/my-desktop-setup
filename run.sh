@@ -35,6 +35,11 @@ if [ $TODO == "setup-base" ]; then
   
   # AWSCLI
   pip3 install awscli
+  
+  # nvm
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+  echo "Apparently it does not add to zshrc you you have to manually add configurations to zshrc"
+  echo "Once that is done install nodejs using nvm install --lts"
 fi
 
 if [ $TODO == "setup-jenkins" ]; then
