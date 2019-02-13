@@ -10,7 +10,7 @@ if [ $TODO == "setup-base" ]; then
   sudo apt update
   sudo apt -y install git curl vim snapd python3-pip adb 
   sudo apt -y install ncdu ecryptfs-utils openssh-server meld
-  sudo apt -y install openjdk-11-jdk jq
+  sudo apt -y install openjdk-11-jdk network-manager-openvpn-gnome 
 
   # Configure terminal from https://github.com/therahulprasad/my-terminal-configuration
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/therahulprasad/my-terminal-configuration/master/init.sh)"
@@ -20,7 +20,7 @@ if [ $TODO == "setup-base" ]; then
 
   # Install basic applications, IDEs and tools
   sudo snap install sublime-text atom skype firefox android-studio
-  sudo snap install docker gitkraken
+  sudo snap install docker gitkraken jq
   
   # Install gvm
   sudo apt install bison
