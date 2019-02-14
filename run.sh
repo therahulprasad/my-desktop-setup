@@ -11,7 +11,8 @@ if [ $TODO == "setup-base" ]; then
   sudo apt -y install git curl vim snapd python3-pip adb 
   sudo apt -y install ncdu ecryptfs-utils openssh-server meld
   sudo apt -y install openjdk-11-jdk network-manager-openvpn-gnome 
-
+  sudo apt -y install php
+  
   # Configure terminal from https://github.com/therahulprasad/my-terminal-configuration
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/therahulprasad/my-terminal-configuration/master/init.sh)"
 
@@ -46,7 +47,7 @@ if [ $TODO == "setup-base" ]; then
   export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
   echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
   curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-  sudo apt-get update && sudo apt-get install -y google-cloud-sdk
+  sudo apt-get update && sudo apt -y install google-cloud-sdk
 fi
 
 if [ $TODO == "setup-jenkins" ]; then
