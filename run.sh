@@ -41,6 +41,12 @@ if [ $TODO == "setup-base" ]; then
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
   echo "Apparently it does not add to zshrc you you have to manually add configurations to zshrc"
   echo "Once that is done install nodejs using nvm install --lts"
+  
+  #gsutils
+  export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
+  echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+  curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+  sudo apt-get update && sudo apt-get install -y google-cloud-sdk
 fi
 
 if [ $TODO == "setup-jenkins" ]; then
