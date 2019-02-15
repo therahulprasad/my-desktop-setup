@@ -21,7 +21,7 @@ if [ $TODO == "setup-base" ]; then
 
   # Install basic applications, IDEs and tools
   sudo snap install sublime-text atom skype firefox android-studio
-  sudo snap install docker gitkraken jq
+  sudo snap install docker gitkraken jq gimp
   
   # Install gvm
   sudo apt install bison
