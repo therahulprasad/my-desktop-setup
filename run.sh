@@ -8,7 +8,7 @@ if [ $TODO == "setup-base" ]; then
   ls $HOME/Development/go || mkdir $HOME/Development/go
 
   sudo apt update
-  sudo apt -y install git curl vim snapd python3-pip adb 
+  sudo apt -y install git curl vim snapd python3-pip ipython3 adb 
   sudo apt -y install ncdu ecryptfs-utils openssh-server meld
   sudo apt -y install openjdk-11-jdk network-manager-openvpn-gnome 
   sudo apt -y install php
