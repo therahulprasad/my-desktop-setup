@@ -11,7 +11,7 @@ if [ $TODO == "setup-base" ]; then
   sudo apt -y install git curl vim snapd python3-pip ipython3 adb 
   sudo apt -y install ncdu ecryptfs-utils openssh-server meld
   sudo apt -y install openjdk-11-jdk network-manager-openvpn-gnome 
-  sudo apt -y install php mysql-client
+  sudo apt -y install php mysql-client pv
   
   # Configure terminal from https://github.com/therahulprasad/my-terminal-configuration
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/therahulprasad/my-terminal-configuration/master/init.sh)"
@@ -25,7 +25,7 @@ if [ $TODO == "setup-base" ]; then
   sudo snap install vscode --classic
   
   # Install gvm
-  sudo apt install bison
+  sudo apt install bison 
   bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
   [[ -s "\$HOME/.gvm/scripts/gvm" ]] && source "\$HOME/.gvm/scripts/gvm"
   gvm install go1.4 -B # This is needed for building upstream version from source code
